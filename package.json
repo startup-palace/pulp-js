@@ -18,7 +18,9 @@
   "main": "default.js",
   "files": [
     "/tasks/browser-sync.js",
+    "/tasks/copy.js",
     "/tasks/design-token-build.js",
+    "/tasks/jekyll-build.js",
     "/tasks/js-build.js",
     "/tasks/js-lint.js",
     "/tasks/scss-build.js",
