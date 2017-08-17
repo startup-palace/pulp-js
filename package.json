@@ -16,17 +16,6 @@
     "url": "gitlab.startup-palace.com/startup-palace/gulp-file/issues"
   },
   "main": "default.js",
-  "files": [
-    "/tasks/browser-sync.js",
-    "/tasks/copy.js",
-    "/tasks/design-token-build.js",
-    "/tasks/jekyll-build.js",
-    "/tasks/js-build.js",
-    "/tasks/js-lint.js",
-    "/tasks/scss-build.js",
-    "/tasks/scss-lint.js",
-    "/tasks/watch-src.js"
-  ],
   "dependencies": {
     "gulp-angular-templatecache": "^2.0.0",
     "gulp-load-plugins": "^1.5.0",
