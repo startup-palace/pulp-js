@@ -28,7 +28,8 @@ module.exports = function (gulp, plugins, manifest) {
 				.pipe(plugins.environments.production(plugins.ngAnnotate()))
 				.pipe(plugins.environments.production(plugins.uglify()))
 				.pipe(plugins.environments.production(plugins.rename(manifest.name + '-' + item.name + '.min.js')))
-				.pipe(plugins.environments.production(gulp.dest(dest)));
+				.pipe(plugins.environments.production(gulp.dest(dest)))
+				.pipe(plugins.browserSync.reload({ stream:true }));
 		}));
 	});
 };

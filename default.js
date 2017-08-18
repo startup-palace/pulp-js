@@ -26,12 +26,13 @@ module.exports = function (gulp, plugins, manifest) {
 
 	gulp.task('run', function () {
 		return plugins.runSequence(
-			'browser-sync', 'design-token-build', 'copy', ['js', 'scss'], 'jekyll-build'
+			'design-token-build', 'copy', ['js', 'scss'], 'jekyll-build'
 		);
 	});
 
 	gulp.task('watch', function () {
 		return plugins.runSequence(
+			'browser-sync',
 			'run',
 			'watch-src'
 		);
