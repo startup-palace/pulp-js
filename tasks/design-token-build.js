@@ -1,17 +1,19 @@
 module.exports = function (gulp, plugins, manifest) {
 	gulp.task('design-token-build', function () {
-		return plugins.merge2(manifest.tasks["design-tokens"].map(function (item) {
-			return gulp.src(item.src)
-				.pipe(plugins.yaml({ schema: 'DEFAULT_SAFE_SCHEMA' }))
-				// .pipe(gulp.dest(paths.designTokens))
-				.pipe(plugins.jsonSass({
-					delim: '-',
-					sass: false,
-				}))
-				.pipe(plugins.footer('\n'))
-				.pipe(plugins.concat('_' + item.name + '.scss'))
-				.pipe(plugins.header('// Design tokens generated\n'))
-				.pipe(gulp.dest(item.dest));
-		}));
+        if (manifest.tasks.scss !== undefined) {
+            return plugins.merge2(manifest.tasks["design-tokens"].map(function (item) {
+                return gulp.src(item.src)
+                    .pipe(plugins.yaml({ schema: 'DEFAULT_SAFE_SCHEMA' }))
+                    // .pipe(gulp.dest(paths.designTokens))
+                    .pipe(plugins.jsonSass({
+                        delim: '-',
+                        sass: false,
+                    }))
+                    .pipe(plugins.footer('\n'))
+                    .pipe(plugins.concat('_' + item.name + '.scss'))
+                    .pipe(plugins.header('// Design tokens generated\n'))
+                    .pipe(gulp.dest(item.dest));
+            }));
+        }
 	});
 };

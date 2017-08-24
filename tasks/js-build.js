@@ -13,7 +13,7 @@ module.exports = function (gulp, plugins, manifest) {
 			return gulp.src(src)
 				.pipe(plugins.through2.obj(function (file, enc, next) {
 					plugins.browserify(file.path)
-						.transform(plugins.babelify, {presets: ['es2015']})
+						.transform(plugins.babelify, {presets: ['es2015'], plugins: ['import-glob']})
 						.bundle(function (err, res) {
 							if(err) {
 								console.log(err.message);

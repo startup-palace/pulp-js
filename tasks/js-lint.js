@@ -8,7 +8,9 @@ module.exports = function (gulp, plugins, manifest) {
 				item.src
 			}
 			return gulp.src(data)
-				.pipe(plugins.eslint('./node_modules/pulp-js/.eslintrc'))
+				.pipe(plugins.eslint({
+					configFile: './node_modules/pulp-js/.eslintrc',
+				}))
 				.pipe(plugins.eslint.format())
 				.pipe(plugins.eslint.failAfterError());
 		}));
