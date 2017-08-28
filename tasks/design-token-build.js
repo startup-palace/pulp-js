@@ -1,6 +1,6 @@
 module.exports = function (gulp, plugins, manifest) {
 	gulp.task('design-token-build', function () {
-        if (manifest.tasks.scss !== undefined) {
+        if (manifest.tasks["design-tokens"] !== undefined) {
             return plugins.merge2(manifest.tasks["design-tokens"].map(function (item) {
                 return gulp.src(item.src)
                     .pipe(plugins.yaml({ schema: 'DEFAULT_SAFE_SCHEMA' }))
