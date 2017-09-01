@@ -11,11 +11,9 @@ module.exports = function (gulp, plugins, manifest) {
                 }
                 return gulp.src(data)
                     .pipe(plugins.sassLint({
-                        options: {
-                            configFile: './node_modules/pulp-js/.sass-lint.yml',
-                            endless: true,
-                            sync: true,
-                        }
+                        configFile: './node_modules/pulp-js/.sass-lint.yml',
+                        endless: true,
+                        sync: true,
                     }))
                     .pipe(plugins.sassLint.format())
                     .pipe(plugins.sassLint.failOnError())
