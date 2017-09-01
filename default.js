@@ -9,6 +9,7 @@ module.exports = function (gulp, plugins, manifest) {
 	require('./tasks/design-token-build')(gulp, plugins, manifest);
 	require('./tasks/jekyll-build')(gulp, plugins, manifest);
 	require('./tasks/copy')(gulp, plugins, manifest);
+    require('./tasks/angular-template')(gulp, plugins, manifest);
 
 	gulp.task('js', function () {
 		return plugins.runSequence(
@@ -26,7 +27,7 @@ module.exports = function (gulp, plugins, manifest) {
 
 	gulp.task('run', function () {
 		return plugins.runSequence(
-			'design-token-build', 'copy', ['js', 'scss'], 'jekyll-build'
+			'design-token-build', 'copy', ['js', 'scss', 'angular-template'], 'jekyll-build'
 		);
 	});
 
