@@ -10,32 +10,36 @@ module.exports = function (gulp, plugins, manifest) {
 	require('./tasks/jekyll-build')(gulp, plugins, manifest);
 	require('./tasks/copy')(gulp, plugins, manifest);
     require('./tasks/angular-template')(gulp, plugins, manifest);
+    require('./tasks/rev')(gulp, plugins, manifest);
 
-	gulp.task('js', function () {
+	gulp.task('js', function (callback) {
 		return plugins.runSequence(
 			'js-lint',
-			'js-build'
+			'js-build',
+            callback
 		);
 	});
 
-	gulp.task('scss', function () {
+	gulp.task('scss', function (callback) {
 		return plugins.runSequence(
 			'scss-lint',
-			'scss-build'
+			'scss-build',
+            callback
 		);
 	});
 
-	gulp.task('run', function () {
+	gulp.task('run', function (callback) {
 		return plugins.runSequence(
-			'design-token-build', 'copy', ['js', 'scss', 'angular-template'], 'jekyll-build'
+			'design-token-build', 'copy', ['js', 'scss-build', 'angular-template'], 'rev', 'jekyll-build', callback
 		);
 	});
 
-	gulp.task('watch', function () {
+	gulp.task('watch', function (callback) {
 		return plugins.runSequence(
 			'browser-sync',
 			'run',
-			'watch-src'
+			'watch-src',
+            callback
 		);
 	});
 
