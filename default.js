@@ -28,18 +28,17 @@ module.exports = function (gulp, plugins, manifest) {
 		);
 	});
 
-	gulp.task('run', function (callback) {
+	gulp.task('run', function () {
 		return plugins.runSequence(
-			'design-token-build', 'copy', ['js', 'scss-build', 'angular-template'], 'rev', 'jekyll-build', callback
+			'design-token-build', 'copy', ['js', 'scss-build', 'angular-template'], 'rev', 'jekyll-build'
 		);
 	});
 
-	gulp.task('watch', function (callback) {
+	gulp.task('watch', function () {
 		return plugins.runSequence(
 			'browser-sync',
 			'run',
-			'watch-src',
-            callback
+			'watch-src'
 		);
 	});
 
