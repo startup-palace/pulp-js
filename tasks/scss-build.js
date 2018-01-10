@@ -4,6 +4,7 @@ module.exports = function (gulp, plugins, manifest) {
             return plugins.merge2(manifest.tasks.scss.map(function (item) {
                 var dest = item.dest;
                 var criticalDest = item['critical-dest'] ? item['critical-dest'] : dest ;
+                var criticalExt = item['critical-ext'] ? item['critical-ext'] : 'css' ;
                 var src = gulp.src(item.src)
                     .pipe(plugins.sassGlob())
                     .pipe(plugins.sass().on('error', plugins.sass.logError))
@@ -18,7 +19,7 @@ module.exports = function (gulp, plugins, manifest) {
                         output: plugins.postcssCriticalSplit.output_types.CRITICAL_CSS
                     })]))
                     .pipe(plugins.environments.production(plugins.csso()))
-                    .pipe(plugins.rename(manifest.name + '-' + item.name + '-critical.css'))
+                    .pipe(plugins.rename(manifest.name + '-' + item.name + '-critical.' + criticalExt))
                     .pipe(gulp.dest(criticalDest))
                     .pipe(plugins.environments.production(plugins.postcss([plugins.postcssFlexbugsFixes])))
 
