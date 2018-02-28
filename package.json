@@ -1,5 +1,5 @@
 {
-  "name": "pulp-js",
+  "name": "@startup-palace/pulp-js",
   "version": "0.0.1",
   "description": "Startup Palace Gulpfile",
   "scripts": {
