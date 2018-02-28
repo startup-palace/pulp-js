@@ -1,6 +1,6 @@
 # Pulp
 
-Pulp is a library of tasks for [gulp](https://gulpjs.com/. It helps to quickly create a modular development workflow adapted to our projects.
+Pulp is a library of tasks for [gulp](https://gulpjs.com/). It helps to quickly create a modular development workflow adapted to our projects.
 
 ## Principle
 
