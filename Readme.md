@@ -59,6 +59,17 @@ Install Pulp in your NPM depencies:
 
 Gulp is managed with the `gulpfile.js`. It requires the external modules and defines the tasks we need for the development workflow.
 
+### Run
+
+To run in devloppement mode
+`gulp`
+
+To run in devloppement mode with watch tool
+`gulp watch`
+
+To run in prodction mode
+`gulp --env production`
+
 #### The gulpfile
 
 Create a `gulpfile.js` in your root folder, and copy / paste:
