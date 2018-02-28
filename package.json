@@ -1,6 +1,6 @@
 {
   "name": "@startup-palace/pulp-js",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Startup Palace Gulpfile",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
