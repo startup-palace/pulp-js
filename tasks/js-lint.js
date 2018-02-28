@@ -10,7 +10,7 @@ module.exports = function (gulp, plugins, manifest) {
                 }
                 return gulp.src(data)
                     .pipe(plugins.eslint({
-                        configFile: './node_modules/pulp-js/.eslintrc',
+                        configFile: './node_modules/@startup-palace/pulp-js/.eslintrc',
                     }))
                     .pipe(plugins.eslint.format())
                     .pipe(plugins.eslint.failAfterError());
