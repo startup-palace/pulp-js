@@ -55,7 +55,7 @@ NPM uses the `package.json` in the project directory to know which local package
 
 Install Pulp in your NPM depencies:
 
-`npm install pulp-js --save-dev`
+`npm install @startup-palace/pulp-js --save-dev`
 
 Gulp is managed with the `gulpfile.js`. It requires the external modules and defines the tasks we need for the development workflow.
 
@@ -80,7 +80,7 @@ var merge           = require('lodash.merge');
 var loadPlugins     = require('gulp-load-plugins');
 
 var plugins = loadPlugins({
-    config: merge(require('./node_modules/pulp-js/package.json')),
+    config: merge(require('./node_modules/@startup-palae/pulp-js/package.json')),
     pattern: ['gulp{-,.}*', '@*/gulp{-,.}*', '*']
 });
 
