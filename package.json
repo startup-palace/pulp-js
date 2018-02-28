@@ -53,7 +53,6 @@
     "gulp-uncss": "^1.0.6",
     "gulp-util": "^3.0.8",
     "gulp-yaml": "^1.0.1",
-    "jquery": "^1.12.4",
     "lazysizes": "^4.0.0-rc1",
     "merge2": "^1.2.0",
     "postcss-critical-split": "^2.5.1",
