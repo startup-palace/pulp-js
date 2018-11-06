@@ -3,7 +3,7 @@ module.exports = function (gulp, plugins, manifest) {
         if (manifest.tasks['jekyll-build'] !== undefined) {
             var cp = require('child_process');
 
-            return cp.exec('bundle exec ' + (process.platform === 'win32' ? 'jekyll.bat' : 'jekyll') + ' build', function(error, stdout, stderr) {
+            return cp.exec('bundle exec jekyll build', function(error, stdout, stderr) {
                 plugins.browserSync.reload({ stream:true });
                 done(error);
             });
