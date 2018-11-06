@@ -7,12 +7,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.startup-palace.com:startup-palace/gulp-file.git"
+    "url": "https://github.com/startup-palace/pulp-js.git"
   },
   "author": "Maxime Pauvert <maxime.pauvert@startup-palace.com>",
   "license": "MIT",
   "bugs": {
-    "url": "gitlab.startup-palace.com/startup-palace/gulp-file/issues"
+    "url": "https://github.com/startup-palace/pulp-js/issues"
   },
   "main": "default.js",
   "dependencies": {
