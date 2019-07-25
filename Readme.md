@@ -386,10 +386,3 @@ See https://github.com/sasstools/gulp-sass-lint
 The parameters in the `assets-manifest.json` are the same as the Scss build parameters.
 
 The rules ared defined in the `.sass-lint.yml` in the root folder.
-
-
-
-
-
-
-

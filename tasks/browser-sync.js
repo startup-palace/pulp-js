@@ -1,8 +1,5 @@
-'use strict';
-
 module.exports = function(gulp, plugins, manifest) {
-
-   gulp.task('browser-sync', function () {
+	return function browserSync(done) {
 		plugins.browserSync.init({
 			notify: false,
 			server: {
@@ -10,5 +7,6 @@ module.exports = function(gulp, plugins, manifest) {
 			},
 			open: false,
 		});
-    });
+		done();
+	};
 };

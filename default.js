@@ -1,46 +1,44 @@
-module.exports = function (gulp, plugins, manifest) {
+module.exports = function(gulp, plugins, manifest) {
 
-	require('./tasks/browser-sync')(gulp, plugins, manifest);
-	require('./tasks/scss-build')(gulp, plugins, manifest);
-	require('./tasks/scss-lint')(gulp, plugins, manifest);
-	require('./tasks/js-build')(gulp, plugins, manifest);
-	require('./tasks/js-lint')(gulp, plugins, manifest);
-	require('./tasks/watch-src')(gulp, plugins, manifest);
-	require('./tasks/design-token-build')(gulp, plugins, manifest);
-	require('./tasks/jekyll-build')(gulp, plugins, manifest);
-	require('./tasks/copy')(gulp, plugins, manifest);
-    require('./tasks/angular-template')(gulp, plugins, manifest);
-    require('./tasks/rev')(gulp, plugins, manifest);
+	var browserSync = require('./tasks/browser-sync')(gulp, plugins, manifest);
+	var scssBuild = require('./tasks/scss-build')(gulp, plugins, manifest);
+	var scssLint = require('./tasks/scss-lint')(gulp, plugins, manifest);
+	var jsBuild = require('./tasks/js-build')(gulp, plugins, manifest);
+	var jsLint = require('./tasks/js-lint')(gulp, plugins, manifest);
+	var designTokenBuild = require('./tasks/design-token-build')(gulp, plugins, manifest);
+	var jekyllBuild = require('./tasks/jekyll-build')(gulp, plugins, manifest);
+	var copy = require('./tasks/copy')(gulp, plugins, manifest);
+	var angularTemplate = require('./tasks/angular-template')(gulp, plugins, manifest);
+	var rev = require('./tasks/rev')(gulp, plugins, manifest);
 
-	gulp.task('js', function (callback) {
-		return plugins.runSequence(
-			'js-lint',
-			'js-build',
-            callback
-		);
+	var js = gulp.series(jsLint, jsBuild);
+	var scss = gulp.series(scssLint, scssBuild);
+	var run = gulp.series(designTokenBuild, copy, js, scss, angularTemplate, rev, jekyllBuild);
+
+	var pulp = {
+		'browser-sync': browserSync,
+		'scss-build': scssBuild,
+		'scss-lint': scssLint,
+		'js-build': jsBuild,
+		'js-lint': jsLint,
+		'design-token-build': designTokenBuild,
+		'jekyll-build': jekyllBuild,
+		copy: copy,
+		'angular-template': angularTemplate,
+		rev: rev,
+
+		default: run,
+		js: js,
+		scss: scss,
+		run: run,
+	};
+
+
+	var watchSrc = require('./tasks/watch-src')(gulp, plugins, manifest, pulp);
+	var watch = gulp.series(browserSync, run, watchSrc);
+
+	return Object.assign(pulp, {
+		'watch-src': watchSrc,
+		watch: watch,
 	});
-
-	gulp.task('scss', function (callback) {
-		return plugins.runSequence(
-			'scss-lint',
-			'scss-build',
-            callback
-		);
-	});
-
-	gulp.task('run', function () {
-		return plugins.runSequence(
-			'design-token-build', 'copy', ['js', 'scss-build', 'angular-template'], 'rev', 'jekyll-build'
-		);
-	});
-
-	gulp.task('watch', function () {
-		return plugins.runSequence(
-			'browser-sync',
-			'run',
-			'watch-src'
-		);
-	});
-
-	gulp.task('default', ['run']);
 };
