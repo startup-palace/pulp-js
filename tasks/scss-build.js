@@ -7,7 +7,7 @@ module.exports = function(gulp, plugins, manifest) {
 				var criticalExt = item['critical-ext'] ? item['critical-ext'] : 'css';
 				var src = gulp.src(item.src)
 					.pipe(plugins.sassGlob())
-					.pipe(plugins.sass().on('error', plugins.sass.logError))
+					.pipe(plugins.gulpSass().on('error', plugins.gulpSass.logError))
 					.pipe(plugins.autoprefixer({ browsers: ['last 2 version', 'ie 9', 'Firefox > 20', 'Safari > 5'] }))
 					.pipe(plugins.cssCount());
 

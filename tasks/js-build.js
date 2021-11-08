@@ -14,7 +14,10 @@ module.exports = function(gulp, plugins, manifest) {
 				return gulp.src(src)
 					.pipe(plugins.through2.obj(function(file, enc, next) {
 						plugins.browserify(file.path)
-							.transform(plugins.babelify, { presets: ['@babel/preset-env'], plugins: ['import-glob'] })
+							.transform(plugins.babelify, {
+								presets: ['./node_modules/@startup-palace/pulp-js/node_modules/@babel/preset-env'],
+								plugins: ['./node_modules/@startup-palace/pulp-js/node_modules/babel-plugin-import-glob'],
+							})
 							.bundle(function(err, res) {
 								if (err) {
 									console.log(err.message);

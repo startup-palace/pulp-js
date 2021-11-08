@@ -1,4 +1,18 @@
-module.exports = function(gulp, plugins, manifest) {
+const loadPlugins = require('gulp-load-plugins');
+
+module.exports = function (gulp, manifest) {
+	var plugins = loadPlugins({
+		pattern: ['gulp{-,.}*', '@*/gulp{-,.}*', '*'],
+		rename: {
+			"gulp-sass": "gulpSass",
+			"sass": "sass",
+		},
+		postRequireTransforms: {
+			gulpSass: function (gulpSass) {
+				return gulpSass(require("sass"));
+			},
+		},
+	});
 
 	var browserSync = require('./tasks/browser-sync')(gulp, plugins, manifest);
 	var scssBuild = require('./tasks/scss-build')(gulp, plugins, manifest);
